@@ -1,0 +1,26 @@
+body
+    {
+    font-family:Verdana,Serif;
+      background-color:orange; 
+      color: black;
+    }
+    
+    h1{
+      color: red;      
+      font-size: 15px;
+    
+    }
+    h2{
+      color: green;
+      font-size:14px;
+    
+    }
+    h3{
+     color: blue;      
+      font-size:12px;       
+    }
+    
+    p{
+      color: brown;      
+      font-size:11px;
+    }
