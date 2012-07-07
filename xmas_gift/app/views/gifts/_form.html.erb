@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :person %><br />
-    <%= f.text_field :person %>
+    <%= f.collection_select :person_id, Person.all, :id, :name, :prompt => true %>
   </div>
   <div class="actions">
     <%= f.submit %>
