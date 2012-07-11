@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<table>
+	<% @user.books.each do |book| %>
+		<tr>
+			<td><%= book.title %></td>			
+		</tr>
+	<% end%>
+</table>
+
+<%= link_to 'Add Book', addbook_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
