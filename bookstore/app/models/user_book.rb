@@ -1,4 +1,4 @@
 class UserBook < ActiveRecord::Base
-	belong_to :user
-	belong_to :book
+	belongs_to :user
+	belongs_to :book
 end
