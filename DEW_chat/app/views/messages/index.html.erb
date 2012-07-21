@@ -1,0 +1,54 @@
+<h1>
+	<%= link_to "Chat Maravilloso", root_path %>
+	<!-- Esto es un comentario -->
+</h1>
+
+<ul id="chat_container">
+	<% @messages.each do |message| %>
+		<li>  
+			<%= message.name %> dijo: 
+			<%= message.content %>
+		</li>
+	<% end %>
+</ul>
+
+<br />
+
+<%= form_for(Message.new, :remote => true) do |f| %>  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'New Message', new_message_path %>
+
+<script type="text/javascript">
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) window.console.log(message);
+    };
+
+    // Flash fallback logging - don't include this in production
+    WEB_SOCKET_DEBUG = true;
+	
+    var pusher = new Pusher('df4c9ec4d8e30fc07116');
+    var channel = pusher.subscribe('Main');
+    channel.bind('message:create', function(data) {
+      var message = "<li id='message_"+data.id + "'>"
+	  message += data.name + ": " + data.content
+	  message += "</li>"
+	  
+	  $("#chat_container").append(message);
+	  $("#message_content").val("");
+	  $("#message_content").focus();
+    });
+
+</script>
